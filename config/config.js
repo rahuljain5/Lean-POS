@@ -4,7 +4,7 @@ module.exports = {
     api_key: "",
     redis_url : process.env.REDIS_URL || "redis://localhost:6379",
     userdb_url: process.env.DATABASE_URL || "mysql://dummyuser:dummy123@db4free.net:3307/dummymysql",
-    dialect: "mysql",
+    dialect: {dialect: 'postgres'},
     loginTtl: 30.00 * 60.00, //mins
     forgotexpiry : 10.00 * 60.00 * 24 ,// 1 day
     jwtKey: process.env.JWT_KEY || "secret",
@@ -19,6 +19,7 @@ module.exports = {
     connection_url: "mongodb://localhost:27017/RAFFLE",
     api_key: "",
     userdb_url: process.env.DATABASE_URL,
+    dialect: 'postgres',
     redis_url : process.env.REDIS_URL,
     loginTtl: 10.00 * 60.00, //mins
     forgotexpiry: 10.00 * 60.00 * 24,// 1 day
