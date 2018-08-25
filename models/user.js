@@ -18,10 +18,6 @@ module.exports = (sequelize, Sequelize) => {
             unique: true,
             allowNull : false
         },
-        branch :{
-            type: Sequelize.STRING,
-            efaultValue: "N/A",
-        },
         token: {
             type: Sequelize.STRING,
             defaultValue: null
