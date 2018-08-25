@@ -6,6 +6,7 @@ const models = require("./models");
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cluster = require('cluster');
+var env = process.env.NODE_ENV || "development";
 const sessionAuth = require("./middleware/sessionAuth.js")
 var index = require('./routes/index');
 var users = require('./routes/users');
