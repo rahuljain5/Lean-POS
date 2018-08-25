@@ -9,9 +9,9 @@ var config = require(__dirname + "/../config/config.js")[env];
 var db = {};
 
 if (config.use_env_variable) {
-    var sequelize = new Sequelize(config.userdb_url, config.dialect);
+    var sequelize = new Sequelize(config.userdb_url, {dialect: 'postgres', });
 } else {
-    var sequelize = new Sequelize(config.userdb_url,config.dialect);
+    var sequelize = new Sequelize(config.userdb_url, {dialect: 'postgres', });
 }
 
 fs
