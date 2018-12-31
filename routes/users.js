@@ -17,22 +17,22 @@ router.post("/register", function (req, res) {
   const passwordvalid = validate(req.body.password, null, 6);
   const emailvalidator = validate(req.body.email, /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, 0);
   if (uservalid == -1) {
-    err.message = "USERNAME MUST BE MORE THAN 4 CHARACTER";
+    err.message = "USERNAME MUST BE MORE THAN 4 CHARACTERS";
     res.send(err);
     return;
   }
   if (uservalid == -2) {
-    err.message = "USERNAME CAN CONTAIN ONLY LETTER AND NUMBERS";
+    err.message = "USERNAME CAN CONTAIN ONLY LETTERS AND NUMBERS";
     res.send(err);
     return;
   }
   if (passwordvalid == -1) {
-    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTER";
+    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTERS";
     res.send(err);
     return;
   }
   if (emailvalidator == -2) {
-    err.message = "USERNAME CAN CONTAIN ONLY LETTER AND NUMBERS";
+    err.message = "USERNAME CAN CONTAIN ONLY LETTERS AND NUMBERS";
     res.send(resp.E02);
     return;
   }
@@ -46,7 +46,7 @@ router.post("/login", function (req, res) {
   const passwordvalid = validate(req.body.password, null, 6);
 
   if (passwordvalid == -1) {
-    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTER";
+    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTERS";
     res.send(err);
     return;
   }
@@ -76,12 +76,12 @@ router.post("/forgotpassword", function (req, res) {
     return;
   }
   if (passwordvalid == -1) {
-    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTER";
+    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTERS";
     res.send(err);
     return;
   }
   if (cpasswordvalid == -1) {
-    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTER";
+    err.message = "PASSWORD MUST BE MORE THAN 6 CHARACTERS";
     res.send(err);
     return;
   }
