@@ -14,14 +14,14 @@ let transporter = nodemailer.createTransport({
 
 const sendmail = (to, subject, message) => {
     let mailOptions = {
-        from: "noreply@raffle.cf", // sender address
+        from: "noreply@stoim", // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
         html: message // html body
     };
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.log("Erorr:" + error)
+            console.log("Error:" + error)
             return 1;
         }
         console.log("Message sent: %s", info.messageId);
