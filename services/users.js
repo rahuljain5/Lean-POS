@@ -134,7 +134,7 @@ const forgotpasswordinit = (state, callback) => {
       var forgotpasswordcontenttemp = forgotpasswordcontent.replace(/####/g, otp)
       forgotpasswordcontenttemp = forgotpasswordcontenttemp.replace(/@@@@/g, val.dataValues.username)
       forgotpasswordcontenttemp = forgotpasswordcontenttemp.replace(/%%%%/g, min)
-      const subject = "Request to reset your Raffle password"
+      const subject = "Request to reset your StoIM password"
       mailer.sendmail(state.email, subject, forgotpasswordcontenttemp)
       models.User.update({
         "token": crypto.gethash(otp)
