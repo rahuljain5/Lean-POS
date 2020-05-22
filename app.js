@@ -10,6 +10,8 @@ var env = process.env.NODE_ENV || "development";
 const sessionAuth = require("./middleware/sessionAuth.js")
 var index = require('./routes/index');
 var users = require('./routes/users');
+require('dotenv').config();
+
 
 var app = express();
 const initmiddleware = (app) => {
