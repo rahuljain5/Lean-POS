@@ -1,3 +1,9 @@
+const environment = require('dotenv').config();
+
+if(environment.error){
+  console.error(environment.error);
+}
+
 module.exports = {
   development: {
     connection_url: process.env.MONGODB_URI,
