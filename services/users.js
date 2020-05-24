@@ -8,8 +8,8 @@ var moment = require("moment");
 const redis = require("../services/redis")
 const min = config.forgotexpiry
 const loginTtl = config.loginTtl
-const forgotpasswordcontent = require("../utils/constants").forgotpasswordcontent
-const response = require("../utils/constants").responses
+const forgotpasswordcontent = require("../utils/constants_user").forgotpasswordcontent
+const response = require("../utils/constants_user").responses
 var jwt = require("jsonwebtoken");
 const R = require("ramda")
 
