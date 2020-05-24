@@ -1,7 +1,7 @@
 const response = require('../utils/constants_product').response;
 const dbUrl = require('../config/config')[process.env.NODE_ENV].connection_url;
 const mongoose = require('mongoose');
-const Product = require('../models/product.model');
+const Category = require('../models/category.model');
 
 mongoose.connect(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify:  false});
 mongoose.Promise = global.Promise;
@@ -10,39 +10,39 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 //db.close();
 const getById =  (id) => {
 return new Promise((resolve, reject) => {
-    Product.findById(id, function (err, res) {
+    Category.findById(id, function (err, res) {
         if(res){
             console.log(res);
             resolve(res);
         }
         else
             reject(response.Errors['NotFound'], err)
-    }).populate('category')
+    })
 })}
 
 const getAll =  _ => {
     return new Promise((resolve, reject) => {
-        Product.find(function (err, res) {
+        Category.find(function (err, res) {
         if(res){
             console.log(res);
             resolve(res);
         }
         else
             reject(response.Errors['NotFound'], err)
-    }).populate('category')})}
+    })})}
 
 
 const add =  (p) => {
     return new Promise((resolve, reject) => {
-        let prod = new Product({name: p.name, price: p.price, quantity: p.quantity, description: p.description, code: p.code, category: p.category});
-        prod.save(err => reject(response.Errors['AdditionFailed']))
-        resolve(prod)
+        let cat = new Category({name: p.name, userId: p.userId});
+        cat.save(err => reject(response.Errors['AdditionFailed']))
+        resolve(cat)
     })}
 
 
-const update =  (prod) => {
+const update =  (cat) => {
     return new Promise((resolve, reject) => {
-        Product.findByIdAndUpdate(prod._id, {$set: prod}, function (err,res) {
+        Category.findByIdAndUpdate(cat._id, {$set: cat}, function (err,res) {
             if(res)
             resolve(res);
         else
@@ -51,9 +51,9 @@ const update =  (prod) => {
         
     })}
 
-    const deleteProduct =  (id) => {
+    const deleteCategory =  (id) => {
         return new Promise((resolve, reject) => {
-        Product.findByIdAndRemove(id, function (err) {
+        Category.findByIdAndRemove(id, function (err) {
             if(!err)
             resolve("Removed");
         else
@@ -63,6 +63,6 @@ const update =  (prod) => {
 
 exports.getById = getById;
 exports.add = add;
-exports.deleteProduct = deleteProduct;
+exports.deleteCategory = deleteCategory;
 exports.update = update;
 exports.getAll = getAll;

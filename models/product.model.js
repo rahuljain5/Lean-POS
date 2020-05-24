@@ -6,7 +6,8 @@ let ProductSchema = new Schema({
     code: {type: String, required: true},
     quantity: {type: Number, required: true, default:0},
     description: {type: String, required: false},
-    price: {type: Number, required: true}
+    price: {type: Number, required: true},
+    category: {type: Schema.Types.ObjectId, ref: "Categories"  }
 });
 
 // Export the model
