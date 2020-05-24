@@ -17,7 +17,7 @@ return new Promise((resolve, reject) => {
         }
         else
             reject(response.Errors['NotFound'], err)
-    })
+    }).populate('category')
 })}
 
 const getAll =  _ => {
@@ -29,12 +29,12 @@ const getAll =  _ => {
         }
         else
             reject(response.Errors['NotFound'], err)
-    })})}
+    }).populate('category')})}
 
 
 const add =  (p) => {
     return new Promise((resolve, reject) => {
-        let prod = new Product({name: p.name, price: p.price, quantity: p.quantity, description: p.description, code: p.code});
+        let prod = new Product({name: p.name, price: p.price, quantity: p.quantity, description: p.description, code: p.code, category: p.category});
         prod.save(err => reject(response.Errors['AdditionFailed']))
         resolve(prod)
     })}
