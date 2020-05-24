@@ -5,11 +5,11 @@ const env = process.env.NODE_ENV || "development";
 const config = require("../config/config")[env];
 var moment = require("moment");
 const redis = require("../services/redis")
-const forgotpasswordcontent = require("../utils/constants").forgotpasswordcontent
-const response = require("../utils/constants").responses
+const forgotpasswordcontent = require("../utils/constants_user").forgotpasswordcontent
+const response = require("../utils/constants_user").responses
 var jwt = require("jsonwebtoken");
 var totp = require("../utils/totp");
-const constants = require("../utils/constants").responses;
+const constants = require("../utils/constants_user").responses;
 
 const genrate = (req, callback) => {
     const userID = req.body.UserId;

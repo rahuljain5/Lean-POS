@@ -10,6 +10,7 @@ var env = process.env.NODE_ENV || "development";
 const sessionAuth = require("./middleware/sessionAuth.js")
 var index = require('./routes/index');
 var users = require('./routes/users');
+var products = require('./routes/products');
 
 var app = express();
 const initmiddleware = (app) => {
@@ -44,6 +45,7 @@ app.all('/', (req, res) => {
 });
 
 app.use('/users', users);
+app.use('/products', products);
 
 app.get('/authenticate', function(req, res) {
   res.send({error: false,

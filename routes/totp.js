@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const totp = require("../services/totp.js");
 const validate = require("../utils/helper.js").validate;
-const resp = require("../utils/constants").responses;
+const resp = require("../utils/constants_user").responses;
 
 var err = resp.EC;
 router.get("/", function (req, res) {
