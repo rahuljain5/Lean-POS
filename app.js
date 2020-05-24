@@ -12,6 +12,7 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var products = require('./routes/products');
 var transactions = require('./routes/transactions'); 
+var categories = require('./routes/categories'); 
 
 var app = express();
 const initmiddleware = (app) => {
@@ -48,6 +49,8 @@ app.all('/', (req, res) => {
 app.use('/users', users);
 app.use('/products', products);
 app.use('/transactions', transactions);
+app.use('/categories', categories);
+
 
 app.get('/authenticate', function(req, res) {
   res.send({error: false,
