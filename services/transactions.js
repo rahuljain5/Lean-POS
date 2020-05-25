@@ -12,12 +12,11 @@ const getById =  (id) => {
 return new Promise((resolve, reject) => {
     Transaction.findById(id, function (err, res) {
         if(res){
-            console.log(res);
             resolve(res);
         }
         else
             reject(response.Errors['NotFound'], err)
-    })
+    }).populate({path: 'items.product', populate: {path : 'category'}})
 })}
 
 const getAll =  _ => {
@@ -29,12 +28,13 @@ const getAll =  _ => {
         }
         else
             reject(response.Errors['NotFound'], err)
-    })})}
+    }).populate({path: 'items.product', populate: {path : 'category'}})
+})}
 
 
 const add =  (p) => {
     return new Promise((resolve, reject) => {
-        let transaction = new Transaction({userId: p.userId, amount: p.amount, dealername: p.dealername, description: p.description});
+        let transaction = new Transaction({userId: p.userId, amount: p.amount, dealername: p.dealername, description: p.description, items: p.items, code: p.code});
         transaction.save(err => reject(response.Errors['AdditionFailed']))
         resolve(transaction)
     })}
