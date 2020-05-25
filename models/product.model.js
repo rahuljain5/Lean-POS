@@ -7,8 +7,9 @@ let ProductSchema = new Schema({
     quantity: {type: Number, required: true, default:0},
     description: {type: String, required: false},
     price: {type: Number, required: true},
+    isActive: {type: Boolean, default: true},
     category: {type: Schema.Types.ObjectId, ref: "Categories"  }
-});
+}, {timestamps: true});
 
 // Export the model
 module.exports = mongoose.model('Products', ProductSchema, 'products');

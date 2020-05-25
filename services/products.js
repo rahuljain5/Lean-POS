@@ -22,7 +22,7 @@ return new Promise((resolve, reject) => {
 
 const getAll =  _ => {
     return new Promise((resolve, reject) => {
-        Product.find(function (err, res) {
+        Product.find({$where: {isActive: true}}, function (err, res) {
         if(res){
             console.log(res);
             resolve(res);
@@ -53,7 +53,7 @@ const update =  (prod) => {
 
     const deleteProduct =  (id) => {
         return new Promise((resolve, reject) => {
-        Product.findByIdAndRemove(id, function (err) {
+        Product.findByIdAndUpdate(id, {$set: {isActive: false}} , function (err) {
             if(!err)
             resolve("Removed");
         else
