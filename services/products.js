@@ -20,9 +20,21 @@ return new Promise((resolve, reject) => {
     }).populate('category')
 })}
 
+const getBySearchText =  (text) => {
+    return new Promise((resolve, reject) => {
+        Product.find({$or: [{name: {$regex: text , $options: 'i'}}, {code: {$regex: text , $options: 'i'}}]}, function (err, res) {
+            if(res){
+                console.log(res);
+                resolve(res);
+            }
+            else
+                reject(response.Errors['NotFound'], err)
+        }).populate('category')
+    })}
+
 const getAll =  _ => {
     return new Promise((resolve, reject) => {
-        Product.find({$where: {isActive: true}}, function (err, res) {
+        Product.find({isActive: {$eq: true}}, function (err, res) {
         if(res){
             console.log(res);
             resolve(res);
@@ -62,6 +74,7 @@ const update =  (prod) => {
         })}
 
 exports.getById = getById;
+exports.getBySearchText = getBySearchText;
 exports.add = add;
 exports.deleteProduct = deleteProduct;
 exports.update = update;

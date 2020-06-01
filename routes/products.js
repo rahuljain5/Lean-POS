@@ -11,6 +11,10 @@ router.get("/:id", function (req, res) {
     resolveResponse(products.getById(req.params.id), res);
 })
 
+router.get("/search/:text", function (req, res) {
+    resolveResponse(products.getBySearchText(req.params.text), res);
+})
+
 router.post("/", function (req, res) {
     resolveResponse(products.add(req.body), res);
 })
